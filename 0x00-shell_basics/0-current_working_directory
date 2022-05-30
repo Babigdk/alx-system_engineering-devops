@@ -1,3 +1,2 @@
-#!bin/bash
-pwq \n  
-chmode u+x file
+#!/bin/bash 
+pwd \n
