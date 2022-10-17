@@ -1,81 +1,92 @@
-# Processes and signals
+# 0x05. Processes and signals 
 
-In this project, I learned about handling process ID's and signals in Bash
-with `ps`, `pgrep`, `pkill`, `pkill`, `exit`, and `trap`.
+## Resource
 
-## Tasks :page_with_curl:
+- [Linux PID](http://www.linfo.org/pid.html)
+- [Linux process](https://www.thegeekstuff.com/2012/03/linux-processes-environment/)
+- [Linux signal](https://www.thegeekstuff.com/2012/03/linux-signals-fundamentals/)
 
-* **0. What is my PID**
-  * [0-what-is-my-pid](./0-what-is-my-pid): Bash script that displays its own PID.
+## Tasks
 
-* **1. List your processes**
-  * [1-list_your_processes](./1-list_your_processes): Bash script that displays a
-  list of currently running processes.
-  * Shows all processes for all users, including those not featuring a TTY.
-  * Processes are displayed in a user-oriented hierarchy.
+<details>
+<summary><a href="./0-what-is-my-pid">0. What is my PID</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/NFCmFGcj/image.png' border='0' alt='image'/></a>
+</details>
 
-* **2. Show your Bash PID**
-  * [2-show_your_bash_pid](./2-show_your_bash_pid): Bash script that displays lines
-  containing the `bash` keyword based on the script defined in `1-list_your_processes`.
+<details>
+<summary><a href="./1-list_your_processes">1. List your processes</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/zXW2M4SR/image.png' border='0' alt='image'/></a>
+</details>
 
-* **3. Show your Bash PID made easy**
-  * [3-show_your_bash_pid_made_easy](./3-show_your_bash_pid_made_easy): Bash script
-  that displays the PID along with the process name of processes who name contains the
-  word `bash`.
+<details>
+<summary><a href="./2-show_your_bash_pid">2. Show your Bash PID</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/T3pRbrz9/image.png' border='0' alt='image'/></a>
+</details>
 
-* **4. To infinity and beyond**
-  * [4-to_infinity_and_beyond](./4-to_infinity_and_beyond): Bash script that displays
-  `To infinity and beyond` indefinitely with a `sleep 2` in between each iteration.
+<details>
+<summary><a href="./3-show_your_bash_pid_made_easy">3. Show your Bash PID made easy</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/4NCc3xjn/image.png' border='0' alt='image'/></a>
+</details>
 
-* **5. Kill me now**
-  * [5-kill_me_now](./5-kill_me_now): Bash script that kills the
-  [4-to_infinity_and_beyond](./4-to_infinity_and_beyond) process using `kill`.
+<details>
+<summary><a href="./4-to_infinity_and_beyond">4. To infinity and beyond</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/59rp1zBz/image.png' border='0' alt='image'/></a>
+</details>
 
-* **6. Kill me now made easy**
-  * [6-kill_me_now_made_easy](./6-kill_me_now_made_easy): Bash script that kills the
-  [4-to_infinity_and_beyond](./4-to_infinity_and_beyond) process using `pkill`.
+<details>
+<summary><a href="./5-dont_stop_me_now">5. Don't stop me now!</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/CMWh8vCx/image.png' border='0' alt='image'/></a>
+</details>
 
-* **7. Highlander**
-  * [7-highlander](./7-highlander): Bash script that displays `To infinity and beyond`
-  indefinitely with a `sleep 2` in between each iteration.
-  * Displays `I am invincible!!!` upon receiving a `SIGTERM` signal.
+<details>
+<summary><a href="./6-stop_me_if_you_can">6. Stop me if you can</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/2SLpdvYF/image.png' border='0' alt='image'/></a>
+</details>
 
-* **8. Beheaded process**
-  * [8-beheaded_process](./8-beheaded_process): Bash script that kills the process
-  [7-highlander](./7-highlander).
+<details>
+<summary><a href="./7-highlander">7. Highlander</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/1z5yGXW9/image.png' border='0' alt='image'/></a>
+</details>
 
-* **9. Process and PID file**
-  * [100-process_and_pid_file](./100-process_and_pid_file): Bash script that creates the file
-  `/var/run/holbertonscript.pid` containing its PID and displays `To infinity and
-  beyond` indefinitely.
-  * Displays `I hate the kill command` upon receiving a `SIGTERM` signal.
-  * Displays `Y U no love me?!` upon receiving a `SIGINT` signal.
-  * Deletes the file `/var/run/holbertonscript.pid` and terminates itself
-  upon receiving the `SIGQUIT` or `SIGTERM` signal.
+<details>
+<summary><a href="./8-beheaded_process">8. Beheaded process</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/W4Xg8DTS/image.png' border='0' alt='image'/></a>
+</details>
 
-* **10. Manage my process**
-  * [manage_my_process](./manage_my_process): Bash script that writes `I am alive!` to the file
-  `/tmp/my_process` indefinitely.
-    * Sleeps two seconds in between each write.
-  * [101-manage_my_process](./101-manage_my_process): Bash script that manages the
-  [manage_my_process](./manage_my_process) script.
-  * When passed the argument `start`:
-    * Starts [manage_my_process](./manage_my_process).
-    * Creates a file containing its PID in `/var/run/my_process.pid`.
-    * Displays `manage_my_process started`.
-  * When passed the argument `stop`:
-    * Stops [manage_my_process](./manage_my_process).
-    * Deletes the file `/var/run/my_process.pid`.
-    * Displays `manage_my_process stopped`.
-  * When passed the argument `restart`:
-    * Stops [manage_my_process](./manage_my_process).
-    * Deletes the file `/var/run/my_process.pid`.
-    * Starts `manage_my_process`.
-    * Creates a file containing its PID in `/var/run/my_process.pid`.
-    * Displays `manage_my_process started`.
-  * Otherwise, displays `Usage: manage_my_process {start|stop|restart}`.
+<details>
+<summary><a href="./beheaded_process">9. Beheaded process</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/W4Xg8DTS/image.png' border='0' alt='image'/></a>
+</details>
 
-* **11. Zombie**
-  * [102-zombie.c](./102-zombie.c): C program that creates five zombie processes.
-  * For every zombie created, displays `Zombie process created, PID:
-  <ZOMBIE_PID>`.
+<details>
+<summary><a href="./100-process_and_pid_file">10. Process and PID file</a></summary><br>
+<a href='https://postimg.cc/VdHnF6Cd' target='_blank'><img src='https://i.postimg.cc/rwqjMRyC/image.png' border='0' alt='image'/></a>
+</details>
+
+<details>
+<summary><a href="./101-manage_my_process">11. Manage my process</a></summary><br>
+<a href='https://postimg.cc/2qPfd4z2' target='_blank'><img src='https://i.postimg.cc/gJ0kWD1F/image.png' border='0' alt='image'/></a>
+<ul>
+  <li>Links from screenshot
+  <ul>
+      <li><a href="https://bashitout.com/2013/05/18/Ampersands-on-the-command-line.html">&</a></li>
+      <li><a href="https://www.ghacks.net/2009/04/04/get-to-know-linux-the-etcinitd-directory/">init.d</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Daemon_%28computing%29">Daemon</a></li>
+      <li><a href="https://www.gnu.org/software/bash/manual/html_node/Positional-Parameters.html">Positional parameters</a></li>
+      <li><a href="./manage_my_process">manage_my_process</a></li>
+  </ul>
+  </li>
+</ul>
+</details>
+
+<details>
+<summary><a href="./102-zombie.c">12. Zombie</a></summary><br>
+<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/ry1qKz2Y/image.png' border='0' alt='image'/></a>
+<ul>
+  <li>Links from screenshot
+  <ul>
+      <li><a href="https://zombieprocess.wordpress.com/what-is-a-zombie-process/">what a zombie process is</a></li>
+  </ul>
+  </li>
+</ul>
+</details>
