@@ -6,5 +6,5 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 service nginx start
 ufw allow 'Nginx HTTP'
-echo "Hellow World!\n" | sudo tee /usr/share/nginx/html/index.html
+echo "Hellow World!" | sudo tee /usr/share/nginx/html/index.html
 sudo service nginx restart
