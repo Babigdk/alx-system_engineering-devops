@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# Installs Nginx with the following configurations:
-#+    Listens on port 80.
-#+    Returns a page containing "Holberton School" when queried
-#++    at the root with a curl GET request.
+# Install nginx and use it
+# can’t use systemctl for restarting nginx
 
+<<<<<<< HEAD
 apt-get update
 apt-get install -y nginx
 
@@ -19,3 +18,11 @@ printf %s "server {
 " > /etc/nginx/sites-available/default
 
 service nginx restart
+=======
+sudo apt-get -y update
+sudo apt-get -y install nginx
+service nginx start
+ufw allow 'Nginx HTTP'
+echo "Hellow World!" | sudo tee /usr/share/nginx/html/index.html
+sudo service nginx restart
+>>>>>>> 60bb747c05ba9701ebf146da1182161103dde3c5
