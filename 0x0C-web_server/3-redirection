@@ -2,6 +2,10 @@
 # Configures an Nginx server so that /redirect_me redirects to another page.
 # The redirection is configured as a "301 Moved Permanently"
 
+#!/usr/bin/env bash
+# Configures an Nginx server so that /redirect_me redirects to another page.
+# The redirection is configured as a "301 Moved Permanently"
+
 apt-get update
 apt-get install -y nginx
 
@@ -15,8 +19,8 @@ printf %s "server {
     index  index.html index.htm;
 
     location /redirect_me {
-        return 301 http://cuberule.com/;
-    }
+	return 301 http://cuberule.com/;
+}
 }" > /etc/nginx/sites-available/default
 
 service nginx restart
