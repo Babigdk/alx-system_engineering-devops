@@ -1,17 +1,44 @@
 #!/usr/bin/env bash
-# Install your load balancer
-sudo apt-get -y update
-sudo apt-get -y install haproxy
-sudo chown  $USER:$USER /etc/haproxy/haproxy.cfg
+# Installs HAProxy version 1.8 with the following configurations:
+#+    Enables management via the init script.
+#+    Distributes requests using a round-robin algorithm.
 
-echo "
-frontend estebanweb
-    bind *:80
+apt-get install -y software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-1.8
+apt-get update
+apt-get install -y haproxy=1.8.\*
+
+echo "ENABLED=1" >> /etc/default/haproxy
+mv /etc/haproxy/haproxy.cfg{,.original}
+touch /etc/haproxy/haproxy.cfg
+
+printf %s "global
+    log 127.0.0.1 local0 notice
+    maxconn 2000
+    user haproxy
+    group haproxy
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    retries 3
+    option redispatch
+    timeout connect  5000
+    timeout client  10000
+    timeout server  10000
+
+listen hbnb
+    bind 0.0.0.0:80
     mode http
-    default_backend app
-backend app
+    stats enable
+    stats uri /haproxy?stats
     balance roundrobin
-    server 1542-web-01 54.237.56.128:80 check
-    server 1542-web-02 	34.224.16.76:80 check" >> /etc/haproxy/haproxy.cfg
+    option httpclose
+    option forwardfor
+    server 48393-web-01 54.236.28.21:80 check
+    server 48393-web-02 35.153.18.174:80 check
+" >> /etc/haproxy/haproxy.cfg
 
-sudo service haproxy restart
+service haproxy start
